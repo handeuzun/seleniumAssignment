@@ -39,7 +39,7 @@ public class ProductDetailPage extends BaseMethods {
     String pdpPrice;
     String basketPrice;
 
-    public void tapProductDetail() throws InterruptedException {
+    public void tapProductDetail(){
         wait.until(ExpectedConditions.visibilityOfElementLocated(productsOnSearchResultPage));
         List<WebElement> products = driver.findElements(productsOnSearchResultPage);
         ArrayList<WebElement> productList = new ArrayList<>(products);
@@ -54,9 +54,6 @@ public class ProductDetailPage extends BaseMethods {
     }
 
     public void checkProductDetailPage(){
-        Actions actions = new Actions(driver);
-        WebElement scrollElement = driver.findElement(pdpDetail);
-        actions.moveToElement(scrollElement).perform();
         wait.until(ExpectedConditions.visibilityOfElementLocated(pdpDetail));
     }
 
