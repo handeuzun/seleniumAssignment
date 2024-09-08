@@ -3,7 +3,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.TestInstance;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-
+import org.openqa.selenium.chrome.ChromeOptions;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class BaseTest {
@@ -15,10 +15,10 @@ public class BaseTest {
     @BeforeAll
     public void setUp(){
         System.setProperty("webdriver.chrome.driver","drivers/chromedriver");
-        driver = new ChromeDriver();
+        ChromeOptions options = new ChromeOptions();
+        driver = new ChromeDriver(options);
         driver.manage().window().maximize();
         driver.get("https://www.hepsiburada.com");
-        driver.navigate().refresh();
         productDetailPage = new ProductDetailPage(driver);
         loginPage = new LoginPage(driver);
     }

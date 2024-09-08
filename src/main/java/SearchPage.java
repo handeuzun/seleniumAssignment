@@ -20,19 +20,17 @@ public class SearchPage extends BaseMethods{
     private final By searchComponent = By.cssSelector("input.searchBarContent-UfviL0lUukyp5yKZTi4k");
 
 
-    public void tapAcceptCookies() throws InterruptedException {
-        Thread.sleep(5000);
+    public void tapAcceptCookies(){
         wait.until(ExpectedConditions.visibilityOfElementLocated(acceptCookies));
         click(acceptCookies);
     }
 
     public void clickSearchBar() throws InterruptedException {
-        Thread.sleep(5000);
+        Thread.sleep(3000);
         wait.until(ExpectedConditions.visibilityOfElementLocated(searchButton));
         click(searchButton);
     }
-    public void typeSearchTermAndSearch(String searchTerm) throws InterruptedException {
-        Thread.sleep(5000);
+    public void typeSearchTermAndSearch(String searchTerm){
         wait.until(ExpectedConditions.visibilityOfElementLocated(searchComponent));
         sendKeys(searchComponent,searchTerm);
         driver.findElement(searchComponent).sendKeys(Keys.RETURN);

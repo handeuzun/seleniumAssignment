@@ -19,7 +19,7 @@ public class ProductDetailTests extends BaseTest{
         productDetailPage.checkProductDetailPage();
         productDetailPage.tapLikeButton();
         loginPage.verifyLoginPage();
-        loginPage.login("","");
+        loginPage.login("test123@gmail.com","123123123");
         productDetailPage.checkProductDetailPage();
         productDetailPage.verifyProductLiked();
     }

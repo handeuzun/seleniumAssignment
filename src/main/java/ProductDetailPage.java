@@ -11,7 +11,6 @@ import java.util.List;
 import java.util.Random;
 import java.util.Set;
 
-
 public class ProductDetailPage extends BaseMethods {
 
     private final By reviewsPage = By.className("yPPu6UogPlaotjhx1Qki");
@@ -44,7 +43,6 @@ public class ProductDetailPage extends BaseMethods {
         wait.until(ExpectedConditions.visibilityOfElementLocated(productsOnSearchResultPage));
         List<WebElement> products = driver.findElements(productsOnSearchResultPage);
         ArrayList<WebElement> productList = new ArrayList<>(products);
-        System.out.println("Toplam buton sayısı: " + products.size());
         Random random = new Random();
         int randomIndex = random.nextInt(productList.size());
         WebElement randomProduct = productList.get(randomIndex);
@@ -73,11 +71,10 @@ public class ProductDetailPage extends BaseMethods {
         click(newReview);
     }
 
-    public void scrollToFirstReview() throws InterruptedException {
-        Thread.sleep(3000);
+    public void scrollToFirstReview() {
+        wait.until(ExpectedConditions.visibilityOfElementLocated(thumpsUpComponent));
         Actions actions = new Actions(driver);
         WebElement scrollElement = driver.findElement(thumpsUpComponent);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(thumpsUpComponent));
         actions.moveToElement(scrollElement).perform();
     }
 
@@ -106,11 +103,11 @@ public class ProductDetailPage extends BaseMethods {
     }
 
     public void verifyProductLiked(){
-
+        driver.findElement(favoriteButton).isSelected();
     }
 
     public void getPriceOfProduct() {
-        wait.until(ExpectedConditions.visibilityOfElementLocated(pdpPriceInfo));
+       // wait.until(ExpectedConditions.visibilityOfElementLocated(pdpPriceInfo));
         WebElement element = driver.findElement(pdpPriceInfo);
         pdpPrice = element.getText();
         System.out.println(pdpPrice);
@@ -119,18 +116,17 @@ public class ProductDetailPage extends BaseMethods {
         System.out.println(pdpPrice);
     }
 
-    public void addToBasketButton() throws InterruptedException {
+    public void addToBasketButton(){
         wait.until(ExpectedConditions.visibilityOfElementLocated(addToBasketButton));
         click(addToBasketButton);
-        Thread.sleep(3000);
     }
 
     public void checkAndCloseSuccessPopUp(){
         wait.until(ExpectedConditions.visibilityOfElementLocated(closePopUpButton));
         click(closePopUpButton);
     }
-    public void tapGoToBasket() throws InterruptedException {
-        Thread.sleep(3000);
+    public void tapGoToBasket(){
+        wait.until(ExpectedConditions.visibilityOfElementLocated(basketButton));
         click(basketButton);
     }
 

@@ -25,6 +25,5 @@ public class LoginPage extends BaseMethods{
         sendKeys(emailText,email);
         sendKeys(passwordText,password);
         click(loginButton);
-        Thread.sleep(5000);
     }
 }
